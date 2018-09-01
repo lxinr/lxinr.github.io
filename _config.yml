@@ -12,7 +12,7 @@ github_repo: "https://github.com/lxinr/lxinr.github.io.git" # you code repositor
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "原本无一物，何处惹尘埃！"
-sidebar-avatar: /img/about-by.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar-by.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
