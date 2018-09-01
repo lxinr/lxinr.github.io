@@ -68,6 +68,7 @@ gitalk:
   owner: lxinr    #github用户名
   admin: lxinr
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
+  id: 'window.location.pathname'
 
 
 # 统计
