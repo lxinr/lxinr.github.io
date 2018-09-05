@@ -1,7 +1,7 @@
 # Site settings
 title: Liux Blog
 SEOTitle: Liux的博客 | BY Blog
-header-img: img/post-bg-index.jpg
+header-img: blog/post-bg-index.jpg
 email: lxms.951104@gmail.com
 description: "这深夜一片寂静，是因为你还没听到声音"
 keyword: "Liux, Liux Blog, Liux的博客 javascript vue nodejs react"
@@ -13,7 +13,7 @@ serverurl: "https://file.lxinr.top" # 自定义，静态文件服务器地址
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "原本无一物，何处惹尘埃！"
-sidebar-avatar: /img/avatar-by.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://file.lxinr.top/blog/avatar-by.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
