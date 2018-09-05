@@ -8,6 +8,7 @@ keyword: "Liux, Liux Blog, Liux的博客 javascript vue nodejs react"
 url: "http://lxinr.github.io"
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/lxinr/lxinr.github.io.git" # you code repository
+serverurl: "https://file.lxinr.top" # 自定义，静态文件服务器地址
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
