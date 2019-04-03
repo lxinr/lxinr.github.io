@@ -1,0 +1,84 @@
+---
+layout:     post
+title:      关于LF、CRLF
+subtitle:   关于LF、CRLF的一些概念及处理方法
+date:       2018-10-01
+author:     Liux
+header-img: blog/home-bg-o.jpg
+catalog: true
+tags:
+    - 前端
+---
+
+## 概念
+
+CRLF、LF都是用来表示文本换行的方式，其诞生的由来是因为不同的操作系统之间的差异而产生的，CR即Carriage Return，代表回车(\r)，LF即Line Feed，代表换行(\n)，在windows系统中使用的是CRLF，而在Unix系统即Linux、MacOS、Ubuntu等系统中使用的是LF。因为这个区别，导致了我们很多时候在跨系统协作时出现各种各样的问题。
+
+## git中的处理
+
+当我们的文件的换行格式是CRLF，git提交时如果有警告:<font color=#fb8c00>"warning: LF will be replaced by CRLF in ..."</font>，这个时候我们就需要设置一下git的配置。
+
+### core.autocrlf
+
+git可以在你提交时自动地把行结束符CRLF转换成LF，而在签出代码时把LF转换成CRLF。用core.autocrlf来打开此项功能
+
+#### 1、在windows系统下
+
+把它设置成true，这样当签出代码时，LF会被转换成CRLF
+
+```shell
+git config --global core.autocrlf true
+```
+
+#### 2、在Linux或Mac系统下
+
+把core.autocrlf设置成input来告诉 git 在提交时把CRLF转换成LF，签出时不转换
+
+```shell
+git config --global core.autocrlf input
+```
+
+### .gitattributes
+
+实际上，通过共用同一个配置文件的形式来统一风格更为适合项目的协作。因此我们可以选择编写.gitattributes文件的配置来达到设定换行方式的目的。且该方法会与git config配置合并并覆盖原有设置项，以下仅为对换行方式的配置，更多配置项可查阅 [https://git-scm.com/docs/gitattributes](https://git-scm.com/docs/gitattributes)。
+
+**text**
+
+> 此属性启用并控制行尾标准化。
+对文本文件进行规范化后，其行结尾将在存储库中转换为LF。
+要控制工作目录中使用的行结束样式，请对单个文件使用eol属性，对所有文本文件使用core.eol配置变量。
+
+例子如下
+
+```shell
+## text=auto表示根据git决定是否需要执行标准化与转化
+*         text=auto
+*.txt	  text
+*.vcproj  text eol=crlf
+*.sh	  text eol=lf
+## -text 表示不执行标准化与转换
+*.jpg	  -text 
+```
+其配置会从下往上覆盖
+
+当只有一个配置时，即表示根据操作系统自动填入 core.autocrlf 的设置
+
+```shell
+*         text=auto
+```
+
+## vscode中设置默认换行符
+
+### .editorconfig
+
+通过在.editorconfig设置
+
+```shell
+"files.eol": "\n"
+```
+
+### 设置
+
+在设置中搜索eol，找到该项进行更改设置
+
+![微信图片_20190224231551.png](https://file.lxinr.top/2019/0224/1551021373242.png)
